@@ -1,0 +1,6 @@
+fastapi
+vietocr
+imageio
+Pillow
+uvicorn
+opencv-python-headless

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image to Base64 Converter</title>
+</head>
+<body>
+<h2>Image to Base64 Converter</h2>
+<form id="uploadForm">
+  <input type="file" id="imageInput" accept="image/*" required>
+  <button type="submit">Upload</button>
+</form>
+<p id="base64Output"></p>
+
+<script>
+document.getElementById('uploadForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  var input = document.getElementById('imageInput');
+  var file = input.files[0];
+  
+  if (!file) {
+    alert('Please select an image file.');
+    return;
+  }
+  
+  var reader = new FileReader();
+  reader.onload = function(event) {
+    var base64String = event.target.result.split(',')[1];
+    fetch(" http://127.0.0.1:8000/ocr", {
+      method: "POST",
+      body: JSON.stringify({
+        image: base64String
+      }),
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      }
+    })
+      .then((response) => response.json())
+      .then(
+        response => {
+          document.getElementById('base64Output').textContent = response.data;
+    
+        });
+    };
+  reader.readAsDataURL(file);
+});
+</script>
+</body>
+</html>
