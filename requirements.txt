@@ -1,6 +1,7 @@
 fastapi
-vietocr
+vietocr==0.3.13
+torch==2.3.0
+torchvision
 imageio
 Pillow
 uvicorn
-opencv-python-headless
