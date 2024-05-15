@@ -12,7 +12,7 @@ COPY requirements.txt requirements.txt
 RUN apt-get update && apt-get install -y wget
 
 # Download the required file using wget
-RUN wget -O /app/main/vgg_transformer.pth https://vocr.vn/data/vietocr/config/vgg_transformer.yml
+RUN wget -O /app/main/vgg_transformer.pth https://vocr.vn/data/vietocr/vgg_transformer.pth
 
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
