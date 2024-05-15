@@ -1,6 +1,6 @@
 fastapi
 vietocr==0.3.13
-torch==2.3.0
+http://download.pytorch.org/whl/cpu/torch-2.1.0%2Bcpu-cp39-cp39-linux_x86_64.whl#sha256=86cc28df491fa84738affe752f9870791026565342f69e4ab63e5b935f00a495
 torchvision
 imageio
 Pillow
