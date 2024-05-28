@@ -18,7 +18,7 @@ sudo apt-get update -y
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 ```
 # Pull dockerimage and run docker image
-# Notice assert your ec2 is t3.small and 15gb  disk at least
+# Notice assert your ec2 is t3.small and 15gb  disk at least 
 ```bash
 sudo docker pull phuoc20207/cloud_basic
 cd /home/ubuntu
@@ -30,7 +30,9 @@ sudo docker compose up -d
 ```
 
 # All bin bash (paste to user data when lauching intances)
+# Choose the ubuntu vm ( very important because of type of command line it just work in linux ubuntu) 
 ### Because the model deeplearning is heavy so it will take about 5 minutes to boot the web site and pull the image
+
 ```bash
 #!/bin/bash
 sudo apt-get update -y
@@ -53,6 +55,7 @@ sed -i "s|endpoint|$endpoint|g" docker-compose.yaml
 sudo docker compose up -d
 ```
 # How to test app ( notice http not htttps)
+#### If you cannot connect to website connect to ec2 and go to /var/log/cloud_log_init.log to check the error
 Connect to 
 http://public_ip:3000
 
