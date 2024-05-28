@@ -12,3 +12,6 @@ echo \
   $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
+# Pull dockerimage
+sudo docker pull phuoc20207/cloud_basic
+
