@@ -18,7 +18,7 @@ sudo apt-get update -y
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 ```
 # Pull dockerimage and run docker image
-# Notice assert your ec2 is t3.small and 15gb  disk at least 
+
 ```bash
 sudo docker pull phuoc20207/cloud_basic
 cd /home/ubuntu
@@ -28,10 +28,12 @@ export endpoint=$(curl http://checkip.amazonaws.com)
 sed -i "s|endpoint|$endpoint|g" docker-compose.yaml
 sudo docker compose up -d
 ```
+# Notice 
+1. assert your ec2 is t3.small and 15gb  disk at least
+2. Choose the ubuntu vm ( very important because of type of command line it just work in linux ubuntu) 
+3. Because the model deeplearning is heavy so it will take about 5 minutes to boot the web site and pull the image
 
 # All bin bash (paste to user data when lauching intances)
-# Choose the ubuntu vm ( very important because of type of command line it just work in linux ubuntu) 
-### Because the model deeplearning is heavy so it will take about 5 minutes to boot the web site and pull the image
 
 ```bash
 #!/bin/bash
