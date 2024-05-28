@@ -17,15 +17,24 @@ echo \
 sudo apt-get update -y
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
 ```
-# Pull dockerimage and run docker image
-
+# Pull dockerimage and host website
+1. Pull docker image from my dockerhub ( you can get more information in this https://hub.docker.com/r/phuoc20207/cloud_basic)
 ```bash
 sudo docker pull phuoc20207/cloud_basic
+``
+2. Clone my code
+```bash
 cd /home/ubuntu
 git clone https://github.com/phu2007vis/my_docker.git
 cd my_docker
+```
+3. Set up enviroment variable
+```bash
 export endpoint=$(curl http://checkip.amazonaws.com)
 sed -i "s|endpoint|$endpoint|g" docker-compose.yaml
+```
+4. Run docker image
+```bash
 sudo docker compose up -d
 ```
 # Notice (very important wanning)
