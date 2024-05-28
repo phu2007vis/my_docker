@@ -13,5 +13,9 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 # Pull dockerimage
+```bash
 sudo docker pull phuoc20207/cloud_basic
-
+git clone https://github.com/phu2007vis/my_docker.git
+cd my_docker
+sudo docker compose up
+```
