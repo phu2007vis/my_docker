@@ -6,7 +6,7 @@ services:
     image:
       phuoc20207/cloud_basic
     command: >
-      sh -c "export OCR_ENDPOINT=http://127.0.0.1:3000/ocr && uvicorn app:app --host 0.0.0.0 --port 80"
+      sh -c "export OCR_ENDPOINT=http://$endpoint:3000/ocr && uvicorn app:app --host 0.0.0.0 --port 80"
     ports:
       - "3000:80"
     expose:
