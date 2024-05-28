@@ -22,7 +22,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 ```bash
 sudo docker pull phuoc20207/cloud_basic
 git clone https://github.com/phu2007vis/my_docker.git
-cd my_docker
+cd /home/ubuntu/my_docker
 sudo docker compose up
 ```
 # App from 21013187@st.phenikaa-uni.edu.vn Nguyen Xuan Phuoc
