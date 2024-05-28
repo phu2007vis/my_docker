@@ -20,7 +20,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 # Pull dockerimage and run docker image
 # Notice assert your ec2 is t3.small and 15gb  disk at least
 ```bash
-export enpoint=$(curl http://checkip.amazonaws.com)
+export endpoint=$(curl http://checkip.amazonaws.com)
 sudo docker pull phuoc20207/cloud_basic
 cd /home/ubuntu
 git clone https://github.com/phu2007vis/my_docker.git
