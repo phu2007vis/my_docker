@@ -1,4 +1,4 @@
-# Welcome to my project of cloud fondation course from phenikaa university
+# Welcome to my project of cloud fondation course 
 # Install docker
 1. Add Docker's official GPG key:
 ```bash
@@ -74,5 +74,5 @@ Connect to
 http://public_ip:3000
 
 # Any question please contact via  this  email
-## 21013187@st.phenikaa-uni.edu.vn 
+## 21013187@st.*-uni.edu.vn 
 ## Nguyen Xuan Phuoc
