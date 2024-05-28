@@ -30,6 +30,7 @@ sudo docker compose up -d
 ```
 
 # All bin bash (paste to user data when lauching intances)
+### Because the model deeplearning is heavy so it will take about 5 minutes to boot the web site and pull the image
 ```bash
 #!/bin/bash
 sudo apt-get update -y
