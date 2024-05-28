@@ -28,10 +28,11 @@ export endpoint=$(curl http://checkip.amazonaws.com)
 sed -i "s|endpoint|$endpoint|g" docker-compose.yaml
 sudo docker compose up -d
 ```
-# Notice 
-1. assert your ec2 is t3.small and 15gb  disk at least
-2. Choose the ubuntu vm ( very important because of type of command line it just work in linux ubuntu) 
-3. Because the model deeplearning is heavy so it will take about 5 minutes to boot the web site and pull the image
+# Notice (very important wanning)
+1. Assert your ec2 is t3.small and 15gb  disk at least
+2. Choose the ubuntu vm ( very important because of type of command line it just work in linux ubuntu)
+3. Add inbound rule : custom tcp 3000 anywherer ( container in ec2 expose a port 3000 and route to port 80 to application inside the container)
+4. Because the model deeplearning is heavy so it will take about 5 minutes to boot the web site and pull the image
 
 # All bin bash (paste to user data when lauching intances)
 
