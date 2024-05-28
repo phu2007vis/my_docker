@@ -18,6 +18,7 @@ sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 # Pull dockerimage and run docker image
+# Notice assert your ec2 is t3.small and 15gb  disk at least
 ```bash
 sudo docker pull phuoc20207/cloud_basic
 git clone https://github.com/phu2007vis/my_docker.git
