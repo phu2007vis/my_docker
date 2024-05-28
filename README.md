@@ -25,5 +25,4 @@ git clone https://github.com/phu2007vis/my_docker.git
 cd my_docker
 sudo docker compose up
 ```
-# App from 21013187@st.phenikaa-uni.edu.vn
-# Phuocphenikaa
+# App from 21013187@st.phenikaa-uni.edu.vn Nguyen Xuan Phuoc
