@@ -21,7 +21,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 1. Pull docker image from my dockerhub ( you can get more information in this https://hub.docker.com/r/phuoc20207/cloud_basic)
 ```bash
 sudo docker pull phuoc20207/cloud_basic
-``
+```
 2. Clone my code
 ```bash
 cd /home/ubuntu
