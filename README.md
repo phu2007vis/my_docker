@@ -72,5 +72,6 @@ sudo docker compose up -d
 Connect to 
 http://public_ip:3000
 
-# Any question please contact via  this  email 21013187@st.phenikaa-uni.edu.vn 
+# Any question please contact via  this  email
+## 21013187@st.phenikaa-uni.edu.vn 
 ## Nguyen Xuan Phuoc
