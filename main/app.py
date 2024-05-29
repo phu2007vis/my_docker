@@ -5,7 +5,12 @@ from utils import *
 from fastapi.middleware.cors import CORSMiddleware
 import json
 import os
-ocr_endpoint = os.getenv('OCR_ENDPOINT')
+from sql_contronler import insert_new_person,check_login
+endpoint = os.getenv('OCR_ENDPOINT')
+if not endpoint:
+    endpoint = "http://127.0.0.1:3000"
+ocr_endpoint = endpoint+"/ocr"
+check_login_endpoint = endpoint+'/checkLogin'
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
@@ -19,7 +24,19 @@ templates = Jinja2Templates(directory="templates")
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request,"endpoint": endpoint})
+
+@app.get("/home", response_class=HTMLResponse)
+async def read_root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request,"ocr_endpoint": ocr_endpoint})
+
+@app.post("/checkLogin")
+async def check_login(data: Login, request: Request):
+    if data.tk == "a" and data.mk == "b":
+        return Response(json.dumps({"data":f"{endpoint}/home"}))
+    return Response(json.dumps({"data":"sai"}))
+    
+
 @app.post("/ocr")
 async def ocr(data:ORC_Check):
     #rgb image pil image

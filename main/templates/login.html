@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Template</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body {
+            width: 100%;
+            height: 100vh;
+            background-repeat: no-repeat;
+            background: linear-gradient(33deg, #492155, #111, #280531, #111, #492155);
+        }
+        .container {
+            width: 85%;
+            max-width: 500px;
+            min-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 13%;
+            color: #fff;
+        }
+        .container form {
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            border: 4px solid;
+            border-color: #ffffff23;
+            text-align: center;
+        }
+        .container form .title {
+            font-size: 18px;
+            font-weight: 600;
+            padding: 10px;
+        }
+        .container form .field {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px;
+        }
+        .container form .field label {
+            width: 23%;
+            font-size: 15px;
+            padding: 10px;
+        }
+        .container form .field input {
+            background-color: transparent;
+            width: 77%;
+            padding: 10px;
+            font-size: 15px;
+            border: 4px solid;
+            border-color: #ffffff23;
+            outline: none;
+            color: #fff;
+        }
+        .container form .field input:hover, .container form .field input:focus {
+            border-color: #ffffff83;
+        }
+        .container form .field-checkbox {
+            width: 100%;
+            display: flex;
+            padding: 10px;
+        }
+        .container form .field-checkbox input {
+            padding: 10px;
+            margin-right: 5px;
+        }
+        .container form .field-checkbox label {
+            padding: 10px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+        .container form button {
+            width: 100%;
+            padding: 10px;
+            background: transparent;
+            border: 2px solid;
+            border-color: #ffffff23;
+            color: #fff;
+            font-size: 17px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+        .container form button:hover {
+            border-color: #ffffff83;
+        }
+        .container p {
+            text-align: center;
+            padding: 15px;
+            letter-spacing: 2px;
+        }
+        .container p a, footer a {
+            text-decoration: underline;
+            color: rgb(204, 245, 236);
+        }
+        @media (max-width: 510px) {
+            .container {
+                width: 90%;
+            }
+            .container form {
+                padding: 8px !important;
+            }
+            .container form .field {
+                margin-top: 5px;
+            }
+            .container form .field label {
+                font-size: 14px;
+                padding: 6px;
+            }
+            .container form .field input {
+                font-size: 14px;
+                padding: 8px;
+            }
+        }
+        @media (max-width: 450px) {
+            .container {
+                width: 90%;
+                min-width: 300px;
+            }
+            .container form .field {
+                width: 100%;
+                flex-direction: column;
+            }
+            .container form .field label {
+                text-align: left;
+                padding: 10px;
+            }
+            .container form .field input {
+                width: 100%;
+            }
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-weight: 400;
+            color: #fff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="loginForm" method="post">
+            <h3 class="title">Login</h3>
+            <div class="field">
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" placeholder="Enter your username" required>
+            </div>
+            <div class="field">
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <div class="field-checkbox">
+                <input type="checkbox" name="remember" id="remember">
+                <label for="remember">Remember Me</label>
+            </div>
+            <button type="submit" id="login">LOGIN</button>
+        </form>
+        <p>Don't have an account? <a href="/">Create One</a></p>
+        <div id="errorOutput" class="error"></div>
+    </div>
+    <footer>Hosted by Phuoc</footer>
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            var endpoint = "{{ endpoint }}/checkLogin";
+            var tk = document.getElementById('username').value;
+            var mk = document.getElementById('password').value;
+            fetch(endpoint, {
+                method: "POST",
+                body: JSON.stringify({ tk: tk, mk: mk }),
+                headers: {
+                    "Content-Type": "application/json; charset=UTF-8"
+                }
+            })
+            .then(response => response.json())
+            .then(response => {
+                if (response.error) {
+                    document.getElementById('errorOutput').textContent = response.error;
+                } else {
+                    if (response.data == "sai"){
+                        document.getElementById('errorOutput').textContent = 'Sai tk hoac mk';
+                    }
+                    
+                    else {
+                        window.location.href = response.data;  // Assuming the server sends back a redirect URL
+                    }
+                    
+                }
+            })
+            .catch(error => {
+                document.getElementById('errorOutput').textContent = 'An error occurred: ' + error.message;
+            });
+        });
+    </script>
+</body>
+</html>
