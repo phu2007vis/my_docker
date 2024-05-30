@@ -4,11 +4,13 @@ import pandas as pd
 import atexit
 
 # Fetch environment variables
-sql_endpoint = os.getenv('SQL_ENDPOINT')
+sql_endpoint = os.getenv('SQL_ENDPOINT',"database-1.cxlucbxeycgv.us-east-1.rds.amazonaws.com")
 sql_user = os.getenv('SQL_USER', 'admin')
 sql_password = os.getenv('SQL_PASSWORD', 'phuocvip1')
 database = os.getenv('SQL_DATABASE', 'phuoc')
-
+print(sql_endpoint)
+print(sql_user)
+print(sql_password)
 connection = None
 cursor = None
 
@@ -16,10 +18,10 @@ def connect_to_database():
     global connection, cursor
     try:
         connection = mysql.connector.connect(
-            host=sql_endpoint,
-            sql_user=sql_user,
-            sql_password=sql_password,
-            database=database
+             host=sql_endpoint,
+                user=sql_user,
+                password=sql_password,
+                database=database
         )
         cursor = connection.cursor()
         print("SQL connected successfully")
@@ -43,7 +45,10 @@ def create_person_table():
         """
         cursor.execute(command)
         connection.commit()
-        print("Table 'person' is ready")
+        
+        if not check_login("admin","1"):
+            insert_new_person("admin","1")
+            
     except mysql.connector.Error as e:
         print("Error while creating table", e)
 
@@ -60,15 +65,13 @@ def insert_new_person(tk: str, mk: str):
 
 def check_login(tk: str, mk: str):
     try:
-        command = "SELECT * FROM person WHERE tk = %s AND mk = %s;"
-        cursor.execute(command, (tk, mk))
-        results = cursor.fetchall()
-        column_names = [desc[0] for desc in cursor.description]
-        df = pd.DataFrame(results, columns=column_names)
-        return [df, None]
+            command = "SELECT * FROM person WHERE tk = %s AND mk = %s;"
+            cursor.execute(command, (tk, mk))
+            results = cursor.fetchall()
+            return len(results) > 0
     except mysql.connector.Error as e:
         print("Error while querying MySQL", e)
-        return [None, e]
+        return False
 
 atexit.register(close_database_connection)
 connect_to_database()
