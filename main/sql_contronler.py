@@ -21,7 +21,7 @@ def connect_to_database():
              host=sql_endpoint,
                 user=sql_user,
                 password=sql_password,
-                database=database
+                # database=database
         )
         cursor = connection.cursor()
         print("SQL connected successfully")
@@ -36,6 +36,16 @@ def close_database_connection():
 
 def create_person_table():
     try:
+       # Create the database if it does not exist
+        command = 'CREATE DATABASE IF NOT EXISTS phuoc'
+        cursor.execute(command)
+        connection.commit()
+
+        # Use the newly created database
+        command = 'USE phuoc'
+        cursor.execute(command)
+
+        # Create the table if it does not exist
         command = """
         CREATE TABLE IF NOT EXISTS person (
             tk VARCHAR(255) NOT NULL,
@@ -45,9 +55,8 @@ def create_person_table():
         """
         cursor.execute(command)
         connection.commit()
-        
-        if not check_login("admin","1"):
-            insert_new_person("admin","1")
+        if not check_login_sql('admin','1'):
+            insert_new_person('admin','1')
             
     except mysql.connector.Error as e:
         print("Error while creating table", e)
@@ -63,7 +72,7 @@ def insert_new_person(tk: str, mk: str):
         print("Error while inserting into MySQL", e)
         return [e]
 
-def check_login(tk: str, mk: str):
+def check_login_sql(tk: str, mk: str):
     try:
             command = "SELECT * FROM person WHERE tk = %s AND mk = %s;"
             cursor.execute(command, (tk, mk))

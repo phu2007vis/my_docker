@@ -2,8 +2,7 @@ from PIL import Image
 import io
 import base64
 from pydantic import BaseModel
-from vietocr.tool.predictor import Predictor
-from vietocr.tool.config import Cfg
+
 class ORC_Check(BaseModel):
     image:str
 class Login(BaseModel):
@@ -38,6 +37,8 @@ def decode_base64_to_numpy(base64_string):
     img_pil = Image.open(image_stream)
 
     return img_pil
+from vietocr.tool.predictor import Predictor
+from vietocr.tool.config import Cfg
 config = Cfg.load_config_from_name('vgg_transformer')
 config['cnn']['pretrained']=False
 config['device'] = 'cpu'

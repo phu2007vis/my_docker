@@ -5,7 +5,7 @@ from utils import *
 from fastapi.middleware.cors import CORSMiddleware
 import json
 import os
-from sql_contronler import insert_new_person,check_login
+from sql_contronler import insert_new_person,check_login_sql
 endpoint = os.getenv('OCR_ENDPOINT')
 if not endpoint:
     endpoint = "http://127.0.0.1:3000"
@@ -32,7 +32,7 @@ async def read_root(request: Request):
 
 @app.post("/checkLogin")
 async def check_login(data: Login, request: Request):
-    if data.tk == "a" and data.mk == "b":
+    if check_login_sql(data.tk,data.mk):
         return Response(json.dumps({"data":f"{endpoint}/home"}))
     return Response(json.dumps({"data":"sai"}))
     
