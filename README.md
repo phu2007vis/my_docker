@@ -64,6 +64,14 @@ sudo docker pull phuoc20207/cloud_basic_sql
 cd /home/ubuntu
 git clone https://github.com/phu2007vis/my_docker.git
 cd my_docker
+
+export SQL_ENDPOINT=database-1.cxlucbxeycgv.us-east-1.rds.amazonaws.com
+export SQL_USER=admin
+export SQL_PASSWORD=phuocvip1
+
+sed -i "s|sql_endpoint|$SQL_ENDPOINT|g" docker-compose.yaml
+sed -i "s|sql_user|$SQL_USER|g" docker-compose.yaml
+sed -i "s|sql_password|$SQL_PASSWORD|g" docker-compose.yaml
 sudo docker compose up -d
 ```
 # How to test app ( notice http not htttps)

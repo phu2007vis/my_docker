@@ -7,7 +7,7 @@ import atexit
 sql_endpoint = os.getenv('SQL_ENDPOINT',"database-1.cxlucbxeycgv.us-east-1.rds.amazonaws.com")
 sql_user = os.getenv('SQL_USER', 'admin')
 sql_password = os.getenv('SQL_PASSWORD', 'phuocvip1')
-database = os.getenv('SQL_DATABASE', 'phuoc')
+
 print(sql_endpoint)
 print(sql_user)
 print(sql_password)
