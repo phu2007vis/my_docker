@@ -64,8 +64,6 @@ sudo docker pull phuoc20207/cloud_basic
 cd /home/ubuntu
 git clone https://github.com/phu2007vis/my_docker.git
 cd my_docker
-export endpoint=$(curl http://checkip.amazonaws.com)
-sed -i "s|endpoint|$endpoint|g" docker-compose.yaml
 sudo docker compose up -d
 ```
 # How to test app ( notice http not htttps)
