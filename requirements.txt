@@ -6,3 +6,4 @@ imageio
 Pillow
 uvicorn
 mysql-connector-python 
+pandas
