@@ -101,6 +101,14 @@
             text-decoration: underline;
             color: rgb(204, 245, 236);
         }
+        .error {
+            color: red;               /* Set the text color to red */
+            text-align: center;       /* Center the text horizontally */
+            margin-top: 20px;         /* Add some margin to the top (optional) */
+            text-transform: uppercase; /* Make the text uppercase */
+            font-size: 1.5em;          /* Make the text larger */
+        }
+        
         @media (max-width: 510px) {
             .container {
                 width: 90%;
@@ -148,6 +156,7 @@
 </head>
 <body>
     <div class="container">
+        <div id="errorOutput" class="error"></div>
         <form id="loginForm" method="post">
             <h3 class="title">Login</h3>
             <div class="field">
@@ -164,8 +173,8 @@
             </div>
             <button type="submit" id="login">LOGIN</button>
         </form>
-        <p>Don't have an account? <a href="/">Create One</a></p>
-        <div id="errorOutput" class="error"></div>
+        <p>Don't have an account? <a href="/begin_register">Create One</a></p>
+       
     </div>
     <footer>Hosted by Phuoc</footer>
     <script>
@@ -184,7 +193,7 @@
             .then(response => response.json())
             .then(response => {
                 if (response.error) {
-                    document.getElementById('errorOutput').textContent = response.error;
+                    document.getElementById('errorOutput').textContent = "Connect to database or server error";
                 } else {
                     if (response.data == "sai"){
                         document.getElementById('errorOutput').textContent = 'Sai tk hoac mk';

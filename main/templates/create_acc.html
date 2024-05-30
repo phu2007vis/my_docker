@@ -77,6 +77,14 @@
             font-weight: 600;
             letter-spacing: 1px;
         }
+        .error {
+            color: red;               /* Set the text color to red */
+            text-align: center;       /* Center the text horizontally */
+            margin-top: 20px;         /* Add some margin to the top (optional) */
+            text-transform: uppercase; /* Make the text uppercase */
+            font-size: 1.5em;          /* Make the text larger */
+        }
+        
         .container form button {
             width: 100%;
             padding: 10px;
@@ -148,6 +156,7 @@
 </head>
 <body>
     <div class="container">
+        <div id="errorOutput" class="error"></div>
         <form id="CreateForm" method="post">
             <h3 class="title">Create new account</h3>
             <div class="field">
@@ -165,7 +174,7 @@
             <button type="submit" id="Create">Create</button>
         </form>
       
-        <div id="errorOutput" class="error"></div>
+        
     </div>
     <footer>Hosted by Phuoc</footer>
     <script>
@@ -184,14 +193,14 @@
             .then(response => response.json())
             .then(response => {
                 if (response.error) {
-                    document.getElementById('errorOutput').textContent = 'Tk da ton tai';
+                    document.getElementById('errorOutput').textContent =   "Connect to database or server error" ;
                 } else {
-                    if (response.data == "sai"){
-                        document.getElementById('errorOutput').textContent = 'error';
+                    if (response.data == "tontai"){
+                        document.getElementById('errorOutput').textContent = 'Tk da ton tai';
                     }
                     
                     else {
-                        window.location.href = response.data;  // Assuming the server sends back a redirect URL
+                        window.location.href =  response.data;  
                     }
                     
                 }

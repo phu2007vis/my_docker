@@ -50,7 +50,7 @@ def create_person_table():
         CREATE TABLE IF NOT EXISTS person (
             tk VARCHAR(255) NOT NULL,
             mk VARCHAR(255) NOT NULL,
-            PRIMARY KEY (tk, mk)
+            PRIMARY KEY (tk)
         );
         """
         cursor.execute(command)
