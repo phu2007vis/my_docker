@@ -6,6 +6,9 @@ from vietocr.tool.predictor import Predictor
 from vietocr.tool.config import Cfg
 class ORC_Check(BaseModel):
     image:str
+class Login(BaseModel):
+    tk:str
+    mk:str
 def encode_numpy_array_to_base64(image_np):
     # Convert the NumPy array to PIL Image
     image_pil = Image.fromarray(image_np)
@@ -38,7 +41,7 @@ def decode_base64_to_numpy(base64_string):
 config = Cfg.load_config_from_name('vgg_transformer')
 config['cnn']['pretrained']=False
 config['device'] = 'cpu'
-config['weights'] = "vgg_transformer.pth"
+# config['weights'] = "vgg_transformer.pth"
 detector = Predictor(config)
 def get_text(img):
     s = detector.predict(img)
