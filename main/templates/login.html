@@ -156,6 +156,7 @@
 </head>
 <body>
     <div class="container">
+        <div id="inid" class="error"></div>
         <div id="errorOutput" class="error"></div>
         <form id="loginForm" method="post">
             <h3 class="title">Login</h3>
@@ -178,9 +179,10 @@
     </div>
     <footer>Hosted by Phuoc</footer>
     <script>
+        document.getElementById('inid').textContent = "{{ inid }}";
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            var endpoint = "{{ endpoint }}/checkLogin";
+            var endpoint = window.location.origin + "/checkLogin";
             var tk = document.getElementById('username').value;
             var mk = document.getElementById('password').value;
             fetch(endpoint, {
@@ -200,7 +202,8 @@
                     }
                     
                     else {
-                        window.location.href = response.data;  // Assuming the server sends back a redirect URL
+                       
+                        window.location.href = window.location.origin + "/home"; 
                     }
                     
                 }

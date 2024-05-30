@@ -42,6 +42,7 @@
 </head>
 <body>
 <h2>OCR Reader</h2>
+<div id="inid" class="error"></div>
 <form id="uploadForm">
   <input type="file" id="imageInput" accept="image/*" required>
   <br>
@@ -52,8 +53,11 @@
 <p id="errorOutput" class="error"></p>
 
 <script>
+document.getElementById('inid').textContent = "{{ inid }}";
+var  endpoint = window.location.origin + "/ocr"
 document.getElementById('imageInput').addEventListener('change', function(e) {
-  var endpoint = "{{ ocr_endpoint }}";
+  
+   
   var input = e.target;
   var file = input.files[0];
   
@@ -70,7 +74,7 @@ document.getElementById('imageInput').addEventListener('change', function(e) {
 
 document.getElementById('uploadForm').addEventListener('submit', function(e) {
   e.preventDefault();
-  var endpoint = "{{ ocr_endpoint }}";
+
   
   var input = document.getElementById('imageInput');
   var file = input.files[0];

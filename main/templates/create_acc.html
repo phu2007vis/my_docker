@@ -156,6 +156,7 @@
 </head>
 <body>
     <div class="container">
+        <div id="inid" class = "error"></div>
         <div id="errorOutput" class="error"></div>
         <form id="CreateForm" method="post">
             <h3 class="title">Create new account</h3>
@@ -178,9 +179,10 @@
     </div>
     <footer>Hosted by Phuoc</footer>
     <script>
+        document.getElementById('inid').textContent = "{{ inid }}";
         document.getElementById('CreateForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            var endpoint = "{{ endpoint }}/register";
+            var endpoint = window.location.origin + "/register";
             var tk = document.getElementById('username').value;
             var mk = document.getElementById('password').value;
             fetch(endpoint, {
@@ -200,7 +202,7 @@
                     }
                     
                     else {
-                        window.location.href =  response.data;  
+                        window.location.href =  window.location.origin + "/";  
                     }
                     
                 }
