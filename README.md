@@ -60,7 +60,7 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update -y
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin -y
-sudo docker pull phuoc20207/cloud_basic
+sudo docker pull phuoc20207/cloud_basic_sql
 cd /home/ubuntu
 git clone https://github.com/phu2007vis/my_docker.git
 cd my_docker
