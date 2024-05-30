@@ -65,7 +65,7 @@ cd /home/ubuntu
 git clone https://github.com/phu2007vis/my_docker.git
 cd my_docker
 
-export SQL_ENDPOINT=database-1.cxlucbxeycgv.us-east-1.rds.amazonaws.com
+export SQL_ENDPOINT=database-private.cxlucbxeycgv.us-east-1.rds.amazonaws.com
 export SQL_USER=admin
 export SQL_PASSWORD=phuocvip1
 
