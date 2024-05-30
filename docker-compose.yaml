@@ -2,10 +2,11 @@ version: '3.8'
 
 services:
   app:
-    image:
-      phuoc20207/cloud_basic
+    build:
+      context: .
+
     command: >
-      sh -c "export OCR_ENDPOINT=http://endpoint:3000 && uvicorn app:app --host 0.0.0.0 --port 80"
+      sh -c "uvicorn app:app --host 0.0.0.0 --port 80"
     ports:
       - "3000:80"
     expose:
