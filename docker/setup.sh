@@ -28,8 +28,9 @@ eval "$(ssh-agent -s)"
 ssh-add /app/key/key
 
 mkdir -p ~/.ssh
-# Add GitHub's SSH key to known_hosts to avoid manual prompts
-ssh-keyscan -t ecdsa github.com >> ~/.ssh/known_hosts
+ssh-keyscan -t rsa,ecdsa github.com >> /app/.ssh/known_hosts
+chmod 600 /app/.ssh/known_hosts
+
 
 # Clone the repository if not already present
 if [ ! -d "/app/study_center" ]; then
