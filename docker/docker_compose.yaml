@@ -4,7 +4,7 @@ services:
   app:
     image:
       phuoc20207/cloud_basic
-    command: sh -c "pip install torch torchvision && export OCR_ENDPOINT=http://127.0.0.1:3000/ocr && uvicorn app:app --host 0.0.0.0 --port 80"
+    command: sh -c "cd /app/study_center/face_recognition && python src/face_phuoc.py"
     ports:
       - "3000:80"
     expose:
