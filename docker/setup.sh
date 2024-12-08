@@ -27,6 +27,7 @@ chmod 600 /app/key/key
 eval "$(ssh-agent -s)"
 ssh-add /app/key/key
 
+mkdir -p ~/.ssh
 # Add GitHub's SSH key to known_hosts to avoid manual prompts
 ssh-keyscan -t ecdsa github.com >> ~/.ssh/known_hosts
 
