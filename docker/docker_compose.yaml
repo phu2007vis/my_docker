@@ -2,10 +2,15 @@ version: '3.8'
 
 services:
   app:
-    image:
-      phuoc20207/cloud_basic
-    command: sh -c "cd /app/study_center/face_recognition && python src/face_phuoc.py"
+    image: phuoc20207/ha:latest
+    command: >
+      sh -c "cd study_center/face_recognition && python src/face_phuoc.py"
     ports:
-      - "3000:80"
+      - "7999:7999"
     expose:
-      - 3000
+      - "7999"
+    volumes:
+      - ./setup.sh:/app/setup.sh  # Mount the setup script into the container
+    environment:
+      - HOME=/app
+    entrypoint: ["sh", "-c", "/app/setup.sh && cd /app/study_center/face_recognition && python src/face_phuoc.py"]
