@@ -24,6 +24,7 @@ cd /app
 eval "$(ssh-agent -s)"
 chmod 600 ~/key/key
 ssh-add ~/key/key
+mkdir /root/.ssh
 ssh-keyscan -t ecdsa github.com >> /root/.ssh/known_hosts
 
 # Clone the repository
